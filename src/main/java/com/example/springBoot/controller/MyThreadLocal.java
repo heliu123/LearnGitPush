@@ -59,7 +59,7 @@ public class MyThreadLocal {
                 System.out.println("线程" + name + ":count值为 "+count);
                 System.out.println("线程" + name + ":myThreadLocalCount值为 "+myThreadLocalCount);
                 // ThreadLocal.get方法获取线程变量
-                /*if (null == MyThreadLocal.threadLocal.get()) {
+                if (null == MyThreadLocal.threadLocal.get()) {
                     // ThreadLocal.et方法设置线程变量
                     MyThreadLocal.threadLocal.set(0);
                     System.out.println("线程" + name + ": 0");
@@ -70,7 +70,7 @@ public class MyThreadLocal {
                     if (i == 3) {
                         MyThreadLocal.threadLocal.remove();
                     }
-                }*/
+                }
                 try {
                     Thread.sleep(100);
                 } catch (InterruptedException e) {

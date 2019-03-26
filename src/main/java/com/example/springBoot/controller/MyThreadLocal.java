@@ -22,7 +22,7 @@ public class MyThreadLocal {
         try {
             Thread t1 =   new Thread(new MyIntegerTask("IntegerTask1",myThreadLocalCount));
             t1.start();
-           // t1.join();
+            t1.join();
         } catch (Exception e) {
             e.printStackTrace();
         }

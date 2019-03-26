@@ -26,9 +26,9 @@ public class MyThreadLocal {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        new Thread(new MyStringTask("StringTask1")).start();
+       // new Thread(new MyStringTask("StringTask1")).start();
         new Thread(new MyIntegerTask("IntegerTask2",myThreadLocalCount)).start();
-        new Thread(new MyStringTask("StringTask2")).start();
+        //new Thread(new MyStringTask("StringTask2")).start();
     }
 
     public static class MyIntegerTask implements Runnable {
@@ -56,10 +56,10 @@ public class MyThreadLocal {
                     myThreadLocalCount++;
                 }
 
-                //System.out.println("线程" + name + ":count值为 "+count);
+               System.out.println("线程" + name + ":count值为 "+count);
                 System.out.println("线程" + name + ":myThreadLocalCount值为 "+myThreadLocalCount);
                 // ThreadLocal.get方法获取线程变量
-                /*if (null == MyThreadLocal.threadLocal.get()) {
+               if (null == MyThreadLocal.threadLocal.get()) {
                     // ThreadLocal.et方法设置线程变量
                     MyThreadLocal.threadLocal.set(0);
                     System.out.println("线程" + name + ": 0");
@@ -70,7 +70,7 @@ public class MyThreadLocal {
                     if (i == 3) {
                         MyThreadLocal.threadLocal.remove();
                     }
-                }*/
+                }
                 try {
                     Thread.sleep(100);
                 } catch (InterruptedException e) {

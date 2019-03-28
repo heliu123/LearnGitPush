@@ -1,5 +1,4 @@
-package com.wtyt.tsr.util.common;
-
+package com.example.springBoot.util.common;
 
 
 /**

@@ -1,10 +1,5 @@
 package com.example.springBoot.util.lock;
 
-import com.wtyt.tsr.util.common.StringUtil;
-import com.wtyt.tsr.util.jedis.JedisConnectionType;
-import com.wtyt.tsr.util.jedis.JedisHandle;
-import com.wtyt.tsr.util.jedis.JedisKeysConstants;
-
 /**
  * redis锁
  * @author zhufeng
@@ -20,7 +15,7 @@ public class JedisLockHandle {
 	 * @param value 当前时间+超时时间
 	 * @return 返回true表示加锁成功
 	 */
-	public static boolean lock(String key, String value) {
+/*	public static boolean lock(String key, String value) {
 		key = JedisHandle.getKeyFromId(key, JedisKeysConstants.JEDIS_LOCK_KEY);
 	    // 1.如果不存在key，则存入redis。并返回true
 	    // 如果存在该key，则返回false
@@ -39,7 +34,7 @@ public class JedisLockHandle {
 	        }
 	    }
 	    return false;
-	}
+	}*/
 
 	
 	/**
@@ -49,12 +44,12 @@ public class JedisLockHandle {
 	 * @param key
 	 * @param value
 	 */
-	public static void unlock(String key, String value) {
+	/*public static void unlock(String key, String value) {
 		key = JedisHandle.getKeyFromId(key, JedisKeysConstants.JEDIS_LOCK_KEY);
 	    String currentValue = JedisHandle.getValue(JedisConnectionType.REDIS_NSQ_TOKEN, key);
 	    if(!StringUtil.isEmptyStr(currentValue) && currentValue.equals(value)) {
 	    	JedisHandle.delValue(JedisConnectionType.REDIS_NSQ_TOKEN, key);
 	    }
-	}
+	}*/
 	
 }

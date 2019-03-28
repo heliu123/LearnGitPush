@@ -1,27 +1,16 @@
-package com.wtyt.tsr.util.common;
+package com.example.springBoot.util.common;
+
+import sun.misc.BASE64Decoder;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
-import java.util.zip.GZIPInputStream;
-import java.util.zip.GZIPOutputStream;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipInputStream;
-import java.util.zip.ZipOutputStream;
-import org.apache.tools.bzip2.CBZip2InputStream;
-import org.apache.tools.bzip2.CBZip2OutputStream;
-
-import sun.misc.BASE64Decoder;
-
-import com.jcraft.jzlib.JZlib;
-import com.jcraft.jzlib.ZInputStream;
-import com.jcraft.jzlib.ZOutputStream;
+import java.util.zip.*;
 
 public class StreamUtil {
 	/***
@@ -135,7 +124,7 @@ public class StreamUtil {
 	 * @param data
 	 * @return
 	 */
-	public static byte[] bZip2(byte[] data) {
+	/*public static byte[] bZip2(byte[] data) {
 		byte[] b = null;
 		try {
 			ByteArrayOutputStream bos = new ByteArrayOutputStream();
@@ -150,14 +139,14 @@ public class StreamUtil {
 		}
 		return b;
 	}
-
+*/
 	/***
 	 * 解压BZip2
 	 * 
 	 * @param data
 	 * @return
 	 */
-	public static byte[] unBZip2(byte[] data) {
+	/*public static byte[] unBZip2(byte[] data) {
 		byte[] b = null;
 		try {
 			ByteArrayInputStream bis = new ByteArrayInputStream(data);
@@ -178,7 +167,7 @@ public class StreamUtil {
 		}
 		return b;
 	}
-
+*/
 	/**
 	 * 把字节数组转换成16进制字符串
 	 * 
@@ -203,7 +192,7 @@ public class StreamUtil {
 	 * @return
 	 * @throws IOException
 	 */
-	public static byte[] jzlib(byte[] object) {
+/*	public static byte[] jzlib(byte[] object) {
 		byte[] data = null;
 		try {
 			ByteArrayOutputStream out = new ByteArrayOutputStream();
@@ -219,7 +208,7 @@ public class StreamUtil {
 			e.printStackTrace();
 		}
 		return data;
-	}
+	}*/
 
 	/**
 	 * 解压被压缩的数据
@@ -228,7 +217,7 @@ public class StreamUtil {
 	 * @return
 	 * @throws IOException
 	 */
-	public static byte[] unjzlib(byte[] object) {
+	/*public static byte[] unjzlib(byte[] object) {
 		byte[] data = null;
 		try {
 			ByteArrayInputStream in = new ByteArrayInputStream(object);
@@ -249,7 +238,7 @@ public class StreamUtil {
 			e.printStackTrace();
 		}
 		return data;
-	}
+	}*/
 
 	
 	public static byte[] getHtmlByteArray(final String url) {
@@ -318,7 +307,7 @@ public class StreamUtil {
         }
     }
 	
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		String s = "this is a test";
 		byte[] b1 = zip(s.getBytes());
 		System.out.println("zip:" + bytesToHexString(b1));
@@ -336,5 +325,5 @@ public class StreamUtil {
 		System.out.println("jzlib:" + bytesToHexString(b7));
 		byte[] b8 = unjzlib(b7);
 		System.out.println("unjzlib:" + new String(b8));
-	}
+	}*/
 }

@@ -1,4 +1,4 @@
-package com.wtyt.tsr.util.common;
+package com.example.springBoot.util.common;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -14,9 +14,6 @@ import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
 
-import com.wtyt.tsr.util.init.StartUp;
-import com.wtyt.tsr.util.trace.LogTracableProxyHandler;
-import com.wtyt.tsr.util.trace.LogTraceContext;
 
 
 
@@ -144,13 +141,13 @@ public class Util {
 	 * 线程池加入thread Log
 	 * @param t
 	 */
-	public static <T extends  Runnable>	 void threadPoolTraceLog(T  t){
+/*	public static <T extends  Runnable>	 void threadPoolTraceLog(T  t){
     	Object  object =  Proxy.newProxyInstance(t.getClass().getClassLoader(),t.getClass().getInterfaces(),new LogTracableProxyHandler(t,LogTraceContext.getTraceDetail()));
 		if(object  instanceof Runnable){
 			Runnable  runnable = (Runnable) object;
 			StartUp.executorService.execute(runnable);
 		}
-	}
+	}*/
 	
 	//操作系统判断
 	public static boolean isWindowOs(){

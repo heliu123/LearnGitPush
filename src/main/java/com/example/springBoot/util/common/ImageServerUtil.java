@@ -1,22 +1,7 @@
-package com.wtyt.tsr.util.common;
-
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.util.Base64;
+package com.example.springBoot.util.common;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.json.JSONArray;
-import org.json.JSONObject;
-import org.json.JSONStringer;
-
-import com.wtyt.tsr.util.bean.ConvertBean;
-import com.wtyt.tsr.util.bean.ImageServerBean;
-import com.wtyt.tsr.util.conn.URLConnectionUtil;
-import com.wtyt.tsr.util.constants.ImgConstants;
 
 /**
  * 此类用于与图片服务器进行交互 ImageServerBean中设置的高度/宽度以按比例缩小后 最后达到设置值为准。不进行图片变形。 例
@@ -29,8 +14,8 @@ public class ImageServerUtil {
 
 	private static Logger log = LogManager.getFormatterLogger(ImageServerUtil.class);
 
-	public static void main(String[] args) {
-		/** main方法调试使用System.setProperty设置系统参数 程序启动后会自动从apollo获取,不用单独赋值 */
+/*	public static void main(String[] args) {
+		*//** main方法调试使用System.setProperty设置系统参数 程序启动后会自动从apollo获取,不用单独赋值 *//*
 		System.setProperty("PHOTO_SERVER_URL_NEW",
 				"http://220.248.226.76:20208/image_server/imageUploadHandleV3.action?");
 		System.setProperty("IS_SHQ_TEST_ENVIRONMENT", "0");
@@ -44,7 +29,7 @@ public class ImageServerUtil {
 		String img_url = "http://pic1.nipic.com/2008-12-30/200812308231244_2.jpg";
 		String img_base64_url = ImageServerUtil.Image2Base64(img_url);
 		// 压缩图片base64字符串
-		imageServerBean.setPhoto_stream(StreamUtil.gZip(StreamUtil.getByteFromBase64(img_base64_url)));
+		imageServerBean.setPhoto_stream(com.wtyt.tsr.util.common.StreamUtil.gZip(com.wtyt.tsr.util.common.StreamUtil.getByteFromBase64(img_base64_url)));
 		// 设置图片高度
 		imageServerBean.setHeight("200");
 		// 设置图片宽度
@@ -57,18 +42,18 @@ public class ImageServerUtil {
 		imageServerBean.setIsUseCdn("1");
 		// 设置是否添加水印
 		imageServerBean.setIsAddSy("0");
-		/** 上传图片 */
+		*//** 上传图片 *//*
 		imageServerBean = ImageServerUtil.getImageServerInfo(imageServerBean);
 		System.out.println(imageServerBean.getImg_url());
 		System.out.println(imageServerBean.getSmall_url());
 	}
 
-	/**
+	*//**
 	 * 远程读取image转换为Base64字符串
 	 * 
 	 * @param imgUrl
 	 * @return
-	 */
+	 *//*
 	public static String Image2Base64(String imgUrl) {
 		URL url = null;
 		InputStream is = null;
@@ -117,14 +102,14 @@ public class ImageServerUtil {
 		return imgUrl;
 	}
 
-	/**
+	*//**
 	 * 上传图片服务器并获取相关的信息(上传成功后img_url/small_url被替换)
 	 * 
 	 * @author zhufeng
 	 * @date 2019年3月1日
 	 * @param imageServerBean
 	 * @return ImageServerBean
-	 */
+	 *//*
 	public static ImageServerBean getImageServerInfo(ImageServerBean imageServerBean) {
 		log.info("进入getImageServerInfo");
 		try {
@@ -152,7 +137,7 @@ public class ImageServerUtil {
 			json.key("typeField").value(array);
 			json.endObject();
 			// log.info("传递参数:"+json.toString());
-			/* 2017-05-11 修改了图片上传url 去除两次encode */
+			*//* 2017-05-11 修改了图片上传url 去除两次encode *//*
 			String postStr = ConvertBean.twoTimesDecode(
 					URLConnectionUtil.doPost(System.getProperty("PHOTO_SERVER_URL_NEW"), json.toString()));
 			JSONObject resultJson = new JSONObject(postStr);
@@ -180,6 +165,6 @@ public class ImageServerUtil {
 			log.error("执行getQrCodeUrl出错了，原因==" + e.getMessage());
 			return imageServerBean;
 		}
-	}
+	}*/
 
 }

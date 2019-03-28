@@ -1,19 +1,14 @@
-package com.wtyt.tsr.util.common;
-
+package com.example.springBoot.util.common;
 /*import java.text.ParseException;
 import java.text.SimpleDateFormat;*/
+
+import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.time.DateUtils;
+
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.TimeZone;
-
-import org.apache.commons.lang3.time.DateUtils;
-import org.apache.commons.lang3.StringUtils;
+import java.util.*;
 public class DateUtil {
 	
 	public static final String FORMATE_YMD_HMS_MS ="yyyy-MM-dd HH:mm:ss.SSS";
@@ -798,9 +793,5 @@ public class DateUtil {
     	return time;
     }
     
-    
-    public static void main(String[] args) throws Exception {
-    	 
-    	
-	}
+
 }

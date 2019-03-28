@@ -1,4 +1,4 @@
-package com.wtyt.tsr.util.common;
+package com.example.springBoot.util.common;
 
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.core.JsonGenerationException;
@@ -6,7 +6,7 @@ import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.*;
-import com.wtyt.tsr.util.secret.MD5Coder;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.json.JSONException;
@@ -207,7 +207,7 @@ public class JsonUtil {
 		String timeStamp =String.valueOf(new java.util.Date().getTime());
 		signJson.put("type_code", typeCode);
 		signJson.put("time_stamp", timeStamp);
-		signJson.put("check_value", MD5Coder.md5(typeCode+timeStamp+System.getProperty("LB_SQ_KEY")));
+		//signJson.put("check_value", MD5Coder.md5(typeCode+timeStamp+System.getProperty("LB_SQ_KEY")));
 		return signJson;
 	}
 }

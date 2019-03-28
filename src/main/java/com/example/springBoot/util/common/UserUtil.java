@@ -1,25 +1,13 @@
-package com.wtyt.tsr.util.common;
+package com.example.springBoot.util.common;
 
-import java.util.Enumeration;
-import java.util.TreeMap;
-
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.json.JSONObject;
 
-import com.wtyt.lgms.util.LgmsUtil;
-import com.wtyt.tsr.util.bean.JedisSessionBean;
-import com.wtyt.tsr.util.bean.UserInfoBean;
-import com.wtyt.tsr.util.constants.CodeConstants;
-import com.wtyt.tsr.util.constants.LgmsConstants;
-import com.wtyt.tsr.util.exception.BaseException;
-import com.wtyt.tsr.util.exception.BaseRtException;
-import com.wtyt.tsr.util.jedis.session.JedisSessionHandle;
-import com.wtyt.tsr.util.secret.AESCoder;
-import com.wtyt.tsr.util.secret.ThreeDes;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import java.util.Enumeration;
+import java.util.TreeMap;
 
 public class UserUtil {
 	
@@ -54,7 +42,7 @@ public class UserUtil {
 	 * @return
 	 * @throws Exception 
 	 */
-	public static String getReqUserIdNn(String token,String suid) throws Exception {
+/*	public static String getReqUserIdNn(String token,String suid) throws Exception {
 		if(!StringUtil.isEmptyStr(suid)){
 			return AESCoder.doDecodeStr(suid);
 		}
@@ -62,7 +50,7 @@ public class UserUtil {
 			return AESCoder.doDecodeStr(ThreeDes.decode(token));
 		}		
 		throw new BaseException(CodeConstants.TOKEN_ERROR_CODE,"当前接口不允许用户未登录");
-	}
+	}*/
 	
 	/**
 	 * 获取接口请求的用户信息（用户信息必须存在）
@@ -72,7 +60,7 @@ public class UserUtil {
 	 * @return
 	 * @throws Exception 
 	 */
-	public static String getReqUserIdNn(HttpServletRequest request,String suid) throws Exception {
+/*	public static String getReqUserIdNn(HttpServletRequest request,String suid) throws Exception {
 		if(!StringUtil.isEmptyStr(suid)){
 			return AESCoder.doDecodeStr(suid);
 		}
@@ -81,7 +69,7 @@ public class UserUtil {
 			return AESCoder.doDecodeStr(ThreeDes.decode(token));
 		}		
 		throw new BaseException(CodeConstants.TOKEN_ERROR_CODE,"当前接口不允许用户未登录");
-	}
+	}*/
 	
 	/**
 	 * 获取接口请求的用户信息（用户信息不是必须存在）
@@ -91,7 +79,7 @@ public class UserUtil {
 	 * @return
 	 * @throws Exception 
 	 */
-	public static String getReqUserIdCanNull(HttpServletRequest request,String suid) throws Exception {
+	/*public static String getReqUserIdCanNull(HttpServletRequest request,String suid) throws Exception {
 		if(!StringUtil.isEmptyStr(suid)){
 			return AESCoder.doDecodeStr(suid);
 		}
@@ -100,7 +88,7 @@ public class UserUtil {
 			return AESCoder.doDecodeStr(ThreeDes.decode(token));
 		}		
 		return null;
-	}	
+	}	*/
 	
 	
 	/**
@@ -110,7 +98,7 @@ public class UserUtil {
 	 * @param request
 	 * @throws Exception
 	 */
-	public static void checkSession(HttpServletRequest request) throws Exception {
+/*	public static void checkSession(HttpServletRequest request) throws Exception {
 		String uri = request.getRequestURI();
 		TreeMap<String, String> map = getTreeMap(request);
 		map.put("uri", uri);
@@ -143,7 +131,7 @@ public class UserUtil {
 			throw new BaseException("非法的请求!");
 		}
 	}
-	
+	*/
 	/**
 	 * 获取所有签名参数和参数值并放到treeMap中按key的首字母升序
 	 * 
@@ -175,7 +163,7 @@ public class UserUtil {
 	 * @return
 	 * @throws BaseException
 	 */
-	public static UserInfoBean getUserInfoBean(String userId, String mobileNo) throws BaseRtException {
+	/*public static UserInfoBean getUserInfoBean(String userId, String mobileNo) throws BaseRtException {
 		if ((StringUtil.isEmpty(userId) || "-1".equals(userId)) && StringUtil.isEmpty(mobileNo)) {
 			return null;
 		}
@@ -230,5 +218,5 @@ public class UserUtil {
 			log.info(receive);
 			throw new BaseRtException("服务器繁忙，请稍后重试");
 		}
-	}
+	}*/
 }

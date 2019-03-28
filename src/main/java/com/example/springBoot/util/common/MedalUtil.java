@@ -1,15 +1,10 @@
-package com.wtyt.tsr.util.common;
-
-import java.util.HashMap;
-import java.util.Map;
+package com.example.springBoot.util.common;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.wtyt.lgms.util.LgmsUtil;
-import com.wtyt.tsr.util.constants.LgmsConstants;
-import com.wtyt.tsr.util.exception.BaseException;
-import com.wtyt.tsr.util.secret.AESCoder;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class MedalUtil {
@@ -28,12 +23,12 @@ public class MedalUtil {
 	public static void appointMedal(String opt_user_id, String user_id, String medal_base_id, String is_receive) {
 		try {
 			Map<String, String> map = new HashMap<String,String>();
-			map.put("opt_user_id", AESCoder.doEncodeStr(opt_user_id));
+		//	map.put("opt_user_id", AESCoder.doEncodeStr(opt_user_id));
 			map.put("user_id", user_id);
 			map.put("medal_base_id", medal_base_id);
 			map.put("is_receive", is_receive);
-			String result = LgmsUtil.postLgms(LgmsConstants.LGMS_1016, map);
-			log.info("用户"+user_id+",勋章任命结果："+result);
+			//String result = LgmsUtil.postLgms(LgmsConstants.LGMS_1016, map);
+		//	log.info("用户"+user_id+",勋章任命结果："+result);
 		} catch (Exception e) {
 			log.error("用户"+user_id+",勋章任命失败！！！！",e);
 		}

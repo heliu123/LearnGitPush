@@ -1,4 +1,4 @@
-package com.wtyt.tsr.util.common;
+package com.example.springBoot.util.common;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;

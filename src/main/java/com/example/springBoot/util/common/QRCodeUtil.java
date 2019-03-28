@@ -1,49 +1,16 @@
-package com.wtyt.tsr.util.common;
-
-import java.awt.Color;
-import java.awt.Graphics2D;
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.net.URI;
-import java.net.URL;
-import java.util.Hashtable;
-
-import javax.imageio.ImageIO;
-
-import org.apache.commons.lang3.StringUtils;
-import org.apache.log4j.Logger;
-import org.json.JSONArray;
-import org.json.JSONObject;
-import org.json.JSONStringer;
-
-import com.google.zxing.BarcodeFormat;
-import com.google.zxing.EncodeHintType;
-import com.google.zxing.MultiFormatWriter;
-import com.google.zxing.WriterException;
-import com.google.zxing.client.j2se.MatrixToImageWriter;
-import com.google.zxing.common.BitMatrix;
-import com.swetake.util.Qrcode;
-import com.wtyt.tsr.util.bean.ConvertBean;
-import com.wtyt.tsr.util.bean.ImageServerBean;
-import com.wtyt.tsr.util.conn.URLConnectionUtil;
-
-import sun.misc.BASE64Encoder;
+package com.example.springBoot.util.common;
 
 public class QRCodeUtil {
 	
-	private static Logger log = Logger.getLogger(QRCodeUtil.class);
+/*	private static Logger log = Logger.getLogger(QRCodeUtil.class);
 	
 	public static int BASE_HEIGHT = 500;
 	public static int BASE_WIDTH = 500;
 
-	/**
+	*//**
 	 * 生成二维码
 	 * @throws Exception
-	 */
+	 *//*
 	public static String QRCodeEncoder(String content,String head_img_url) throws Exception {
 		Qrcode qrcode = new Qrcode();
 		qrcode.setQrcodeErrorCorrect('M');
@@ -128,17 +95,17 @@ public class QRCodeUtil {
         return str;
 	}
 	
-	/**
+	*//**
 	 * 执行上传图片
 	 * @param img_base64_url
 	 * @param fileName
 	 * @return
-	 */
+	 *//*
 	public static String executeUploadeImage(String img_base64_url,String fileName){
 		ImageServerBean imageServerBean = new ImageServerBean();
 		imageServerBean.setFile_name(fileName);
 		imageServerBean.setFile_type(".jpg");
-		imageServerBean.setPhoto_stream(StreamUtil.gZip(StreamUtil.getByteFromBase64(img_base64_url)));
+		imageServerBean.setPhoto_stream(com.wtyt.tsr.util.common.StreamUtil.gZip(com.wtyt.tsr.util.common.StreamUtil.getByteFromBase64(img_base64_url)));
         imageServerBean.setHeight("300");
 		imageServerBean.setWidth("300");
 		imageServerBean.setFormat("jpg");
@@ -148,11 +115,11 @@ public class QRCodeUtil {
 	}
 	
 	
-	/**
+	*//**
 	 * 上传图片服务器并获取相关的信息
 	 * @param imageUrl
 	 * @return 用户选择的图片ID
-	 */
+	 *//*
 	private static String getImageServerInfo(ImageServerBean imageServerBean) {
 		log.info("进入getQrCodeUrl");
 		try {
@@ -180,7 +147,7 @@ public class QRCodeUtil {
 			json.key("typeField").value(array);					
 			json.endObject();
 			//log.info("传递参数:"+json.toString());
-			/* 2017-05-11 修改了图片上传url 去除两次encode */
+			*//* 2017-05-11 修改了图片上传url 去除两次encode *//*
 			log.info(">>>>>>>>>看看访问的传参"+json.toString());
 			log.info(">>>>>>>>>看看访问的url"+System.getProperty("PHOTO_SERVER_URL_NEW"));
 			String postStr = ConvertBean.twoTimesDecode(URLConnectionUtil.doPost(System.getProperty("PHOTO_SERVER_URL_NEW"), json.toString()));
@@ -216,6 +183,6 @@ public class QRCodeUtil {
             }
         }
         return resMatrix;
-    }
+    }*/
 
 }

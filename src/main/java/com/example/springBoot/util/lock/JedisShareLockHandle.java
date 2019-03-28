@@ -1,20 +1,7 @@
 package com.example.springBoot.util.lock;
 
-import com.wtyt.tsr.util.common.SpringUtil;
-import com.wtyt.tsr.util.jedis.JedisConnectionType;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.springframework.dao.DataAccessException;
-import org.springframework.data.redis.connection.RedisConnection;
-import org.springframework.data.redis.core.RedisCallback;
-import org.springframework.data.redis.core.StringRedisTemplate;
-import org.springframework.util.StringUtils;
-import redis.clients.jedis.Jedis;
-import redis.clients.jedis.JedisCluster;
-import redis.clients.jedis.JedisCommands;
-
-import java.util.ArrayList;
-import java.util.List;
  
 /**
  * 共享锁
@@ -50,7 +37,7 @@ public class JedisShareLockHandle {
      * @param sleepMillis 重试间隔时长(毫秒)）
      * @return
      */
-    public static boolean lock(String key, String value, long expire, int retryTimes, long sleepMillis) {
+  /*  public static boolean lock(String key, String value, long expire, int retryTimes, long sleepMillis) {
         boolean result = setRedis(key, value, expire);
         // 如果获取锁失败，按照传入的重试次数进行重试
         while((!result) && retryTimes-- > 0){
@@ -63,7 +50,7 @@ public class JedisShareLockHandle {
             result = setRedis(key, value, expire);
         }
         return result;
-    }
+    }*/
     /**
      * 执行加锁动作
      * @author zhufeng
@@ -73,7 +60,7 @@ public class JedisShareLockHandle {
      * @param expire
      * @return
      */
-    private static boolean setRedis(String key, String value, long expire) {
+   /* private static boolean setRedis(String key, String value, long expire) {
     	StringRedisTemplate  redisTemplate =  SpringUtil.getBean(JedisConnectionType.REDIS_NSQ_TOKEN, StringRedisTemplate.class);
         try {
             String result = redisTemplate.execute(new RedisCallback<String>() {
@@ -88,7 +75,7 @@ public class JedisShareLockHandle {
             logger.error("set redis occured an exception", e);
         }
         return false;
-    }
+    }*/
     /**
      * 释放共享锁
      * @author zhufeng
@@ -97,7 +84,7 @@ public class JedisShareLockHandle {
      * @param value
      * @return
      */
-    public static boolean releaseLock(String key, String value) {
+   /* public static boolean releaseLock(String key, String value) {
     	StringRedisTemplate  redisTemplate =  SpringUtil.getBean(JedisConnectionType.REDIS_NSQ_TOKEN, StringRedisTemplate.class);
         // 释放锁的时候，有可能因为持锁之后方法执行时间大于锁的有效期，此时有可能已经被另外一个线程持有锁，所以不能直接删除
         try {
@@ -131,6 +118,6 @@ public class JedisShareLockHandle {
             logger.error("release lock occured an exception", e);
         }
         return false;
-    }
+    }*/
     
 }

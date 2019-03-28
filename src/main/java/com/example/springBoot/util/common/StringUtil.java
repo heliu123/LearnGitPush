@@ -1,4 +1,4 @@
-package com.wtyt.tsr.util.common;
+package com.example.springBoot.util.common;
 
 import java.util.Collection;
 import java.util.regex.Matcher;
@@ -11,9 +11,6 @@ import org.apache.logging.log4j.Logger;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.util.StringUtils;
-
-import com.wtyt.tsr.util.exception.BaseException;
-import com.wtyt.tsr.util.secret.AESCoder;
 
 
 
@@ -80,7 +77,7 @@ public class StringUtil {
 	 * @return
 	 * @throws ServletException
 	 */
-	public static String getJsonObjectValue(JSONObject paramObj,String keyName) throws BaseException{
+/*	public static String getJsonObjectValue(JSONObject paramObj,String keyName) throws BaseException{
 		String value = "";		
 		try {
 			value = paramObj.getString(keyName);
@@ -92,7 +89,7 @@ public class StringUtil {
 		}
 		return value;
 	}
-	
+	*/
 	
 	/**
 	 * 通过json获取到value的值,可以是空值
@@ -101,7 +98,7 @@ public class StringUtil {
 	 * @return
 	 * @throws ServletException
 	 */
-	public static String getJsonObjectValueCanNull(JSONObject paramObj,String keyName) throws BaseException{
+/*	public static String getJsonObjectValueCanNull(JSONObject paramObj,String keyName) throws BaseException{
 		String value = "";		
 		try {
 			value = paramObj.getString(keyName);
@@ -110,13 +107,13 @@ public class StringUtil {
 			value = "";
 		}			
 		return value;
-	}
+	}*/
 	
 	
 	public static String getStringNoBlank(String str) {      
         if(str!=null && !"".equals(str)) {      
             Pattern p = Pattern.compile("\\s*|\t|\r|\n");      
-            Matcher m = p.matcher(str);      
+            Matcher m = p.matcher(str);
             String strNoBlank = m.replaceAll("");      
             return strNoBlank;      
         }else {      
@@ -134,7 +131,7 @@ public class StringUtil {
 	 * @param value
 	 * @return
 	 */
-	public static String getDecodeNumStr(String value) {
+	/*public static String getDecodeNumStr(String value) {
 		if (StringUtils.isEmpty(value)) {
 			return "";
 		}
@@ -144,7 +141,7 @@ public class StringUtil {
 			return getDecodeNumStr(AESCoder.doDecodeStr(value));
 		}
 
-	}
+	}*/
 	
 	/**
 	 * 获取过滤字符串，前后空格和null

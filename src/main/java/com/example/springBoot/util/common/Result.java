@@ -1,13 +1,9 @@
-package com.wtyt.tsr.util.common;
+package com.example.springBoot.util.common;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import com.fasterxml.jackson.databind.PropertyNamingStrategy;
-import com.wtyt.tsr.util.constants.CodeConstants;
-import com.wtyt.tsr.util.exception.BaseRtException;
 
 
 
@@ -35,7 +31,7 @@ public class Result {
 			resultJson.put("reInfo", req_msg);
 			returnJson.put("result", resultJson);
 		} catch (JSONException e) {
-			throw new BaseRtException(CodeConstants.SYS_ERROR_CODE, "垃圾第三方json组件发生异常！！！", e);
+		//	throw new BaseRtException(CodeConstants.SYS_ERROR_CODE, "垃圾第三方json组件发生异常！！！", e);
 		}
 		String returnStr = returnJson.toString();
 		log.debug("接口返回结果为：" + returnStr);
@@ -58,7 +54,7 @@ public class Result {
 			resultJson.put("reInfo", req_msg);
 			returnJson.put("result", resultJson);
 		} catch (JSONException e) {
-			throw new BaseRtException(CodeConstants.SYS_ERROR_CODE, "垃圾第三方json组件发生异常！！！", e);
+		//	throw new BaseRtException(CodeConstants.SYS_ERROR_CODE, "垃圾第三方json组件发生异常！！！", e);
 		}
 		return returnJson;
 	}
@@ -68,16 +64,16 @@ public class Result {
 	 * 
 	 * @return
 	 */
-	public static String getResult() {
+/*	public static String getResult() {
 		return getResult(CodeConstants.SUCCESS_CODE, CodeConstants.SUCCESS_MSG);
-	}
+	}*/
 
 	/**
 	 * 获取返回的成功结果
 	 * 
 	 * @return
 	 */
-	public static String getResult(Object obj) {
+/*	public static String getResult(Object obj) {
 		try {
 			JSONObject returnJson = getJSONResult(CodeConstants.SUCCESS_CODE, CodeConstants.SUCCESS_MSG);
 			if(obj != null){
@@ -96,14 +92,14 @@ public class Result {
 			throw new BaseRtException(CodeConstants.SYS_ERROR_CODE, "json组件发生异常！！！", e);
 		}
 
-	}
+	}*/
 	
-	/**
+/*	*//**
 	 * 获取返回的成功结果
 	 * null值转化为空串
 	 * SNAKE_CASE转换
 	 * @return
-	 */
+	 *//*
 	public static String getResultNullToBlank(Object obj) {
 		try {
 			JSONObject returnJson = getJSONResult(CodeConstants.SUCCESS_CODE, CodeConstants.SUCCESS_MSG);
@@ -125,12 +121,12 @@ public class Result {
 
 	}
 
-	/**
+	*//**
 	 * 获取返回的成功结果
 	 * 忽略null
 	 * SNAKE_CASE转换
 	 * @return
-	 */
+	 *//*
 	public static String getResultExcludeNull(Object obj) {
 		try {
 			JSONObject returnJson = getJSONResult(CodeConstants.SUCCESS_CODE, CodeConstants.SUCCESS_MSG);
@@ -154,11 +150,11 @@ public class Result {
 	
 	
 
-	/**
+	*//**
 	 * 获取返回的自定义成功结果
 	 * 
 	 * @return
-	 */
+	 *//*
 	public static String getResult(String dataStr, Object obj) {
 		try {
 			String dataJson = null;
@@ -176,6 +172,6 @@ public class Result {
 			throw new BaseRtException(CodeConstants.SYS_ERROR_CODE, "json组件发生异常！！！", e);
 		}
 
-	}
+	}*/
 
 }

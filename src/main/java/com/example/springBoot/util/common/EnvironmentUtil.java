@@ -1,10 +1,8 @@
-package com.wtyt.tsr.util.common;
+package com.example.springBoot.util.common;
 
 import org.springframework.context.EnvironmentAware;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
-
-import com.wtyt.tsr.util.exception.BaseRtException;
 
 /**
  * 环境变量相关的类
@@ -31,7 +29,7 @@ public class EnvironmentUtil implements EnvironmentAware{
 	 */
 	public static <T> T getEnvValue(String envName,Class<T> targetType,T defaultValue){
 		if(null==env){
-			throw new BaseRtException("当前环境变量未注入到beanFactory！！！！");
+		//	throw new BaseRtException("当前环境变量未注入到beanFactory！！！！");
 		}	
 		return env.getProperty(envName, targetType, defaultValue);
 	}

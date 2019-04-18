@@ -105,23 +105,25 @@ public class OptimisticLockTest {
         @Override
         public void run() {
             try {
-                Thread.sleep((int)Math.random()*5000);//随机睡眠一下
+                Thread.sleep((int)Math.random()*5);//随机睡眠一下
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
 
             while(true){
-                System.out.println("顾客：" + clientName + "开始抢购商品");
+             //System.out.println("顾客：" + clientName + "开始抢购商品");
                 jedis = RedisUtil.getInstance().getJedis();
                 try {
                     jedis.watch(key);//监视商品键值对，作用时如果事务提交exec时发现监视的键值对发生变化，事务将被取消
                     int prdNum = Integer.parseInt(jedis.get(key));//当前商品个数
+                    System.out.println("当前商品个数:" + prdNum );
                     if (prdNum > 0) {
+                        jedis.watch(key);//监视商品键值对，作用时如果事务提交exec时发现监视的键值对发生变化，事务将被取消
                         Transaction transaction = (Transaction) jedis.multi();//开启redis事务
-                        jedis.set(key,String.valueOf(prdNum - 1));//商品数量减一
+                        transaction.set(key,String.valueOf(prdNum - 1));//商品数量减一
                         List<Object> result =  transaction.exec();//提交事务(乐观锁：提交事务的时候才会去检查key有没有被修改)
                         if (result == null || result.isEmpty()) {
-                            System.out.println("很抱歉，顾客:" + clientName + "没有抢到商品");// 可能是watch-key被外部修改，或者是数据操作被驳回
+                           // System.out.println("很抱歉，顾客:" + clientName + "没有抢到商品");// 可能是watch-key被外部修改，或者是数据操作被驳回
                         }else {
                             jedis.sadd(clientList, clientName);//抢到商品的话记录一下
                             System.out.println("恭喜，顾客:" + clientName + "抢到商品");

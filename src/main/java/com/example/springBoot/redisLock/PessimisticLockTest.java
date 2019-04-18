@@ -6,7 +6,6 @@ import redis.clients.jedis.Jedis;
 import java.util.Set;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
 
 public class PessimisticLockTest {
 
@@ -25,7 +24,7 @@ public class PessimisticLockTest {
      * @date 2017-10-17
      */
     public static void initProduct() {
-        int prdNum = 10;//商品个数
+        int prdNum = 100;//商品个数
         String key = "prdNum";
         String clientList = "clientList";//抢购到商品的顾客列表
         Jedis jedis = RedisUtil.getInstance().getJedis();
@@ -45,7 +44,7 @@ public class PessimisticLockTest {
      */
     public static void initClient() {
         ExecutorService cachedThreadPool = Executors.newCachedThreadPool();
-        int clientNum = 100;//模拟顾客数目
+        int clientNum = 1000;//模拟顾客数目
         for (int i = 0; i < clientNum; i++) {
            cachedThreadPool.execute(new PessClientThread(i));//启动与顾客数目相等的消费者线程
         }
@@ -100,19 +99,19 @@ public class PessimisticLockTest {
 
         @Override
         public void run() {
-           /* try {
-                Thread.sleep(1000);
+            try {
+                Thread.sleep((int)Math.random()*5);//随机睡眠一下
             } catch (InterruptedException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
-            }*/
+            }
             while (true) {
                 if (Integer.parseInt(jedis.get(key)) <= 0) {
                     break;//缓存中没有商品，跳出循环，消费者线程执行完毕
                 }
                 //缓存中还有商品，取锁，商品数目减一
                 System.out.println("顾客:" + clientName + "开始抢商品");
-                if (redisBasedDistributedLock.tryLock(3,TimeUnit.SECONDS)) {//等待3秒获取锁，否则返回false(悲观锁：每次拿数据都上锁)
+                if (redisBasedDistributedLock.tryLock()) {//等待3秒获取锁，否则返回false(悲观锁：每次拿数据都上锁)
                     int prdNum = Integer.parseInt(jedis.get(key));//再次取得商品缓存数目
                     if (prdNum > 0) {
                         jedis.decr(key);//商品数减一

@@ -136,8 +136,8 @@ public class RedisBasedDistributedLock extends AbstractLock{
     /*
      * 判断是否超时(开始时间+锁等待超时时间是否大于系统当前时间)
      */
-    public boolean isTimeout(long start, long timeout) {
-        return start + timeout > System.currentTimeMillis();
+    public boolean  isTimeout(long start, long timeout) {
+        return start + timeout < System.currentTimeMillis();
     }
 
     /*

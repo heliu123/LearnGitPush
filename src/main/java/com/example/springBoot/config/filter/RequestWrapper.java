@@ -56,9 +56,11 @@ public class RequestWrapper extends HttpServletRequestWrapper {
      * @return String
      */
     public String getBodyString() {
-        final InputStream inputStream = new ByteArrayInputStream(body);
+        return new String(body,Charset.forName("UTF-8"));
 
-        return inputStream2String(inputStream);
+       /* final InputStream inputStream = new ByteArrayInputStream(body);
+
+        return inputStream2String(inputStream);*/
     }
 
 

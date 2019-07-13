@@ -16,13 +16,17 @@ import java.util.concurrent.Executors;
 public class FixedThreadPoolTest {
     public static void main(String[] args) {
         ExecutorService fixedThreadPool = Executors.newFixedThreadPool(3);
+        long start = System.currentTimeMillis();
         for (int i = 0; i < 10; i++) {
             final int index = i;
             fixedThreadPool.execute(new Runnable() {
                 public void run() {
                     try {
+                        if(index==5){
+                            throw  new RuntimeException();
+                        }
                         System.out.println(index);
-                        Thread.sleep(2000);
+                        Thread.sleep(1000);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -30,6 +34,16 @@ public class FixedThreadPoolTest {
             });
         }
         fixedThreadPool.shutdown();
+        while(true){
+            if(fixedThreadPool.isTerminated()){
+                //System.out.println("Finally do something ");
+                long end = System.currentTimeMillis();
+                System.out.println("用时: " + (end - start) + "ms");
+                break;
+            }
+
+        }
+
        /* for (int i = 0; i < 10; i++) {
 
                 try {

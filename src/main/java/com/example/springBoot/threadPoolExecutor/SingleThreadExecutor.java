@@ -18,8 +18,11 @@ public class SingleThreadExecutor {
             singleThreadExecutor.execute(new Runnable() {
                 public void run() {
                     try {
+                        if(index==5){
+                            throw  new RuntimeException();
+                        }
                         System.out.println(index);
-                        Thread.sleep(2000);
+                        Thread.sleep(1000);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }

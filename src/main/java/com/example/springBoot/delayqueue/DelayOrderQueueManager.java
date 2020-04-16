@@ -44,6 +44,8 @@ public class DelayOrderQueueManager {
             execute();
         });
         daemonThread.setName("DelayQueueMonitor");
+        //daemonThread.setDaemon(true);//不能设置为守护线程
+        System.out.println(daemonThread.getName()+"isDaemon?:"+daemonThread.isDaemon());
         daemonThread.start();
     }
 

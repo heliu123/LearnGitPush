@@ -2,6 +2,7 @@ package com.example.springBoot.threadPoolExecutor;
 
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -15,6 +16,9 @@ public class ScheduledThreadPool {
 
     public static void main(String[] args) {
         ScheduledExecutorService scheduledThreadPool = Executors.newScheduledThreadPool(5);
+        ScheduledThreadPoolExecutor executor=(ScheduledThreadPoolExecutor)scheduledThreadPool;
+       // executor.setContinueExistingPeriodicTasksAfterShutdownPolicy(true);设置周期性任务是否在线程池shutdown后继续执行，默认为false
+        //executor.setExecuteExistingDelayedTasksAfterShutdownPolicy(false);设置定时任务是否在线程池shutdown后继续执行，默认为true
         //延迟3秒执行
         scheduledThreadPool.schedule(new Runnable() {
             public void run() {
@@ -27,7 +31,7 @@ public class ScheduledThreadPool {
                 System.out.println("delay 1 seconds, and excute every 3 seconds");
             }
         }, 1, 3, TimeUnit.SECONDS);
-        /*try {
+       /* try {
             Thread.sleep(10000);
         } catch (InterruptedException e) {
             e.printStackTrace();

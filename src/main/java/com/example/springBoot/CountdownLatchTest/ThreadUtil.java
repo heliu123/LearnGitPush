@@ -70,10 +70,13 @@ public class ThreadUtil {
         try {
             log.debug("线程任务执行开始:任务数"+tasks.size());
             resultsFuture = exec.invokeAll(tasks);
+            System.out.println(resultsFuture.size());
+            System.out.println("线程池执行invokeAll方法消耗时间 ：" + (System.currentTimeMillis() - start) + "毫秒");
             //resultsFuture = StartUp.executorService.invokeAll(tasks);
             List<T> results = new ArrayList<>();
             for (Future<T> future : resultsFuture) {
                 T result=future.get();
+                System.out.println("线程池执行future.get()方法消耗时间 ：" + (System.currentTimeMillis() - start) + "毫秒");
                 if(result!=null) {
                     results.add(result);
                 }
@@ -114,11 +117,12 @@ public class ThreadUtil {
                         if(Integer.parseInt(str.getWhiteDefineId()) % 5 == 0){
                             throw new RuntimeException(str.getWhiteDefineId() + "@@@id被5整除");
                         }
-                        System.out.println(Thread.currentThread().getName()+"休息1秒");
                         result.add(str);
                     } catch (Exception e) {
                         result.add(e);
                     }
+                    Thread.sleep(1000L);
+                    System.out.println(Thread.currentThread().getName()+"休息1秒");
                 }
                 return result;
             }
